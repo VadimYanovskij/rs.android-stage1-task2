@@ -2,6 +2,7 @@ package subtask1
 
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class DateFormatter {
@@ -10,14 +11,10 @@ class DateFormatter {
     fun toTextDay(day: String, month: String, year: String): String {
         //    throw NotImplementedError("Not implemented")
 
-        var d = day.toInt()
-        val m = month.toInt()
-        var y = year.toInt()
         var result: String = "Такого дня не существует"
 
         try {
-            val date = LocalDate.of(y, m, d)
-            result = date.format(DateTimeFormatter.ofPattern("d MMMM, EEEE"))
+            result = LocalDate.of(year.toInt(), month.toInt(), day.toInt()).format(DateTimeFormatter.ofPattern("d MMMM, EEEE").withLocale(Locale.forLanguageTag("Ru")))
         } finally {
             return result
         }
